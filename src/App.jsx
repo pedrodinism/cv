@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Edit } from "./Edit";
-import { View } from "./View";
+import { Edit } from "./components/Edit";
+import { View } from "./components/View";
 
 export function App() {
   const [info, setInfo] = useState({ name: "", email: "", phone: "" });
