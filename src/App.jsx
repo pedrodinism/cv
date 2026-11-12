@@ -3,27 +3,27 @@ import { Edit } from "./components/Edit";
 import { View } from "./components/View";
 
 export function App() {
-  const [info, setInfo] = useState({ name: "", email: "", phone: "" });
+  const [info, setInfo] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    school: "",
+    course: "",
+    courseFinishedOn: "",
+  });
+  const [isEdit, setIsEdit] = useState(true);
 
-  function handleChange(e) {
-    const id = e.target.id;
-    switch (id) {
-      case "name":
-        setInfo({ ...info, name: e.target.value });
-        break;
-      case "email":
-        setInfo({ ...info, email: e.target.value });
-        break;
-      case "phone":
-        setInfo({ ...info, phone: e.target.value });
-        break;
-    }
+  function handleSubmit(data) {
+    setInfo(data);
+    toggleEditMode();
   }
 
-  return (
-    <div className="mainContent">
-      <Edit info={info} callback={handleChange} />
-      <View info={info} />
-    </div>
-  );
+  function toggleEditMode() {
+    setIsEdit(!isEdit);
+  }
+
+  if (isEdit) {
+    return <Edit info={info} save={handleSubmit} />;
+  }
+  return <View info={info} editMode={toggleEditMode} />;
 }

@@ -112,12 +112,6 @@ code {
 
 /* customization starts here */
 
-.mainContent {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  max-height: 80vh;
-}
-
 .view,
 .edit {
   text-align: left;
@@ -127,29 +121,4 @@ code {
 .edit div {
   display: flex;
   flex-direction: column;
-}
-
-/* view */
-
-.view {
-  border: 1px solid black;
-}
-
-.generalInfo {
-  border-bottom: 1px solid gray;
-}
-
-.name {
-  text-align: center;
-  font-size: 1.5em;
-  font-weight: 600;
-}
-
-.contact {
-  text-align: center;
-  font-size: 12px;
-}
-
-.contact span {
-  padding-right: 10px;
 }
