@@ -7,10 +7,9 @@ export function App() {
     name: "",
     email: "",
     phone: "",
-    school: "",
-    course: "",
-    courseFinishedOn: "",
   });
+  //const [education, setEducation] = useState([]);
+
   const [isEdit, setIsEdit] = useState(true);
 
   function handleSubmit(data) {
