@@ -1,7 +1,26 @@
-export function GeneralInfoForm({ education, handleChange }) {
+import { randomUUID } from "crypto";
+import { useState } from "react";
+
+export function EducationForm({ education, handleChange }) {
+  const [educationForm, setEducationForm] = useState(education);
+
+  const addEducation = () => {
+    setEducationForm((prev) => [
+      ...prev,
+      {
+        id: crypto.randomUUID(),
+        school: "",
+        course: "",
+        startDate: "",
+        endDate: "",
+      },
+    ]);
+  };
+
   return (
     <section>
       <h3>Education</h3>
+      {education}
       <div>
         <label htmlFor="school">School</label>
         <input

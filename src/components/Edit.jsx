@@ -1,25 +1,26 @@
 import { useState } from "react";
 import { GeneralInfoForm } from "./EditGeneral";
 
-export function Edit({ info, save }) {
-  const [infoReplica, setInfoReplica] = useState(info);
-  //const [educationReplica, setEducationReplica] = useState(education);
+export function Edit({ info, save, education }) {
+  const [editInfo, setEditInfo] = useState(info);
+  const [editEducation, setEditEducation] = useState(education);
 
   function handleChangeInfo(e) {
     const name = e.target.id;
     const value = e.target.value;
-    setInfoReplica({ ...infoReplica, [name]: value });
+    setEditInfo({ ...editInfo, [name]: value });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    save(infoReplica);
+    save(editInfo);
   }
 
   return (
     <section className="edit">
       <form onSubmit={handleSubmit}>
-        <GeneralInfoForm info={infoReplica} handleChange={handleChangeInfo} />
+        <GeneralInfoForm info={editInfo} handleChange={handleChangeInfo} />
+
         <button type="submit">Save</button>
       </form>
     </section>
