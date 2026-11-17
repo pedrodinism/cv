@@ -1,0 +1,40 @@
+function App() {
+  const animals = ["Lion", "Cow", "Snake", "Lizard"];
+
+  return (
+    <div>
+      <h1>Animals: </h1>
+      <ul>
+        {animals.map((animal) => {
+          return <li key={animal}>{animal}</li>;
+        })}
+      </ul>
+    </div>
+  );
+}
+
+
+function deleteExperience(id) {
+  setExperiences((prev) =>
+    prev.filter((experience) => experience.id !== id)
+  );
+}
+
+function updateExperience(id, updatedData) {
+  setExperiences((prev) =>
+    prev.map((experience) =>
+      experience.id === id
+        ? { ...experience, ...updatedData }
+        : experience
+    )
+  );
+}
+
+setExperiences((prev) => [
+  ...prev,
+  {
+    id: crypto.randomUUID(),
+    company: "",
+    position: "",
+  },
+]);

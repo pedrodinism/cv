@@ -8,12 +8,20 @@ export function App() {
     email: "",
     phone: "",
   });
-  const [education, setEducation] = useState([]);
+  const [education, setEducation] = useState([
+    {
+      id: "",
+      school: "",
+      course: "",
+      endDate: "",
+    },
+  ]);
 
   const [isEdit, setIsEdit] = useState(true);
 
-  function handleSubmit(data) {
-    setInfo(data);
+  function handleSubmit(generalInfo, educationInfo) {
+    setInfo(generalInfo);
+    setEducation(educationInfo);
     toggleEditMode();
   }
 
@@ -24,5 +32,5 @@ export function App() {
   if (isEdit) {
     return <Edit info={info} education={education} save={handleSubmit} />;
   }
-  return <View info={info} editMode={toggleEditMode} />;
+  return <View info={info} education={education} editMode={toggleEditMode} />;
 }

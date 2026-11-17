@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { GeneralInfoForm } from "./EditGeneral";
+import { EducationForm } from "./EditEducation";
 
 export function Edit({ info, save, education }) {
   const [editInfo, setEditInfo] = useState(info);
@@ -13,14 +14,48 @@ export function Edit({ info, save, education }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    save(editInfo);
+    save(editInfo, editEducation);
+  }
+
+  function addEducation() {
+    setEditEducation((prev) => [
+      ...prev,
+      {
+        id: getId(),
+        school: "",
+        course: "",
+        endDate: "",
+      },
+    ]);
+  }
+
+  function getId() {
+    let max = 0;
+    for (let record of editEducation) {
+      if (record.id > max) {
+        max = record.id;
+      }
+    }
+    return max + 1;
+  }
+
+  function updateEducation(id, updatedRecord) {
+    setEditEducation((prev) =>
+      prev.map((record) =>
+        record.id === id ? { ...record, ...updatedRecord } : record,
+      ),
+    );
   }
 
   return (
     <section className="edit">
       <form onSubmit={handleSubmit}>
         <GeneralInfoForm info={editInfo} handleChange={handleChangeInfo} />
-
+        <EducationForm
+          education={editEducation}
+          addEducation={addEducation}
+          updateEducation={updateEducation}
+        />
         <button type="submit">Save</button>
       </form>
     </section>
