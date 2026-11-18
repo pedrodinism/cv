@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { GeneralInfoForm } from "./EditGeneral";
 import { EducationForm } from "./EditEducation";
+import "../styles/edit.css";
 
 export function Edit({ info, save, education }) {
   const [editInfo, setEditInfo] = useState(info);
@@ -29,6 +30,10 @@ export function Edit({ info, save, education }) {
     ]);
   }
 
+  function deleteEducation(id) {
+    setEditEducation((prev) => prev.filter((record) => record.id !== id));
+  }
+
   function getId() {
     let max = 0;
     for (let record of editEducation) {
@@ -53,10 +58,13 @@ export function Edit({ info, save, education }) {
         <GeneralInfoForm info={editInfo} handleChange={handleChangeInfo} />
         <EducationForm
           education={editEducation}
-          addEducation={addEducation}
-          updateEducation={updateEducation}
+          add={addEducation}
+          update={updateEducation}
+          remove={deleteEducation}
         />
-        <button type="submit">Save</button>
+        <div className="text-align-right">
+          <button type="submit">Save</button>
+        </div>
       </form>
     </section>
   );

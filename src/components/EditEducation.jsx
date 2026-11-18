@@ -1,34 +1,61 @@
-export function EducationForm({ education, addEducation, updateEducation }) {
+export function EducationForm({ education, add, update, remove }) {
+  function handleChange(event, id) {
+    update(id, {
+      [event.target.id]: event.target.value,
+    });
+  }
   return (
     <section>
-      <h3>Education</h3>
-      <div onClick={addEducation}>Add</div>
+      <div className="display-inline">
+        <h3>Education</h3>
+        <button
+          className="margin-left-base"
+          onClick={(event) => {
+            event.preventDefault();
+            return add();
+          }}
+        >
+          Add +
+        </button>
+      </div>
       {education.map((record) => {
         return (
-          <div key={record.id}>
+          <div className="education-row-edit" key={record.id}>
             <div>
               <label htmlFor="school">School</label>
               <input
                 id="school"
+                data-id={record.id}
                 type="text"
-                onChange={(event) =>
-                  updateEducation(record.id, {
-                    school: event.target.value,
-                  })
-                }
+                onChange={(event) => handleChange(event, record.id)}
                 value={record.school}
               />
             </div>
             <div>
               <label htmlFor="course">Course</label>
-              <input id="course" type="text" value={record.course} />
+              <input
+                id="course"
+                type="text"
+                value={record.course}
+                onChange={(event) => handleChange(event, record.id)}
+              />
             </div>
             <div>
               <label htmlFor="endDate">End Date</label>
-              <input id="endDate" type="text" value={record.endDate} />
+              <input
+                id="endDate"
+                type="text"
+                value={record.endDate}
+                onChange={(event) => handleChange(event, record.id)}
+              />
             </div>
-            <div>Delete</div>
-            <div className="separator">-----</div>
+            <button
+              onClick={() => {
+                remove(record.id);
+              }}
+            >
+              Delete
+            </button>
           </div>
         );
       })}

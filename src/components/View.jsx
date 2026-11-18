@@ -3,9 +3,15 @@ import "../styles/view.css";
 export function View({ info, education, editMode }) {
   return (
     <div>
-      <div className="actions" onClick={editMode}>
+      <button
+        className="actions"
+        onClick={(event) => {
+          event.preventDefault();
+          editMode();
+        }}
+      >
         Edit
-      </div>
+      </button>
       <section className="view">
         <div className="generalInfo">
           <div className="name">{info.name}</div>
@@ -20,15 +26,13 @@ export function View({ info, education, editMode }) {
           <div className="courseFinishedOn">{info.courseFinishedOn}</div>
         </div>
         <div className="generalInfo">
-          Education goes here
+          <h3>Education</h3>
           {education.map((record) => {
             return (
-              <div>
-                <div className="school">{record.school}</div>
-                <div className="course">{record.course}</div>
-                <div className="courseFinishedOn">
-                  {record.courseFinishedOn}
-                </div>
+              <div className="education-row">
+                <div>School: {record.school}</div>
+                <div>Course: {record.course}</div>
+                <div>End Date: {record.endDate}</div>
               </div>
             );
           })}

@@ -20,3 +20,7 @@
 .contact span {
   padding-right: 10px;
 }
+
+.generalInfo > .education-row:not(:last-child) {
+  border-bottom: 1px dashed lightgray;
+}

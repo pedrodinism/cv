@@ -1,0 +1,29 @@
+button {
+  margin-top: 20px;
+  width: fit-content;
+}
+
+.display-inline,
+.edit div.display-inline,
+.display-inline h3 {
+  display: inline;
+}
+
+.margin-left-base {
+  margin-left: 20px;
+}
+
+.text-align-right,
+.edit div.text-align-right {
+  text-align: right;
+  display: block;
+}
+
+.education-row-edit {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+section > .education-row-edit:not(:last-child) {
+  border-bottom: 1px solid black;
+}

@@ -8,14 +8,7 @@ export function App() {
     email: "",
     phone: "",
   });
-  const [education, setEducation] = useState([
-    {
-      id: "",
-      school: "",
-      course: "",
-      endDate: "",
-    },
-  ]);
+  const [education, setEducation] = useState([]);
 
   const [isEdit, setIsEdit] = useState(true);
 
