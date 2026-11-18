@@ -44,8 +44,8 @@ export function Edit({ info, save, education }) {
     return max + 1;
   }
 
-  function updateEducation(id, updatedRecord) {
-    setEditEducation((prev) =>
+  function update(id, updatedRecord, setEdit) {
+    setEdit((prev) =>
       prev.map((record) =>
         record.id === id ? { ...record, ...updatedRecord } : record,
       ),
@@ -59,7 +59,9 @@ export function Edit({ info, save, education }) {
         <EducationForm
           education={editEducation}
           add={addEducation}
-          update={updateEducation}
+          update={(id, record) => {
+            return update(id, record, setEditEducation);
+          }}
           remove={deleteEducation}
         />
         <div className="text-align-right">
