@@ -1,7 +1,7 @@
 export function GeneralInfoForm({ info, handleChange }) {
   return (
     <section>
-      <h3>Personal information</h3>
+      <h3>Personal information 2</h3>
       <div>
         <label htmlFor="name">Name</label>
         <input
