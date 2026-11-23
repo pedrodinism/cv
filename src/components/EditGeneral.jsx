@@ -24,7 +24,7 @@ export function GeneralInfoForm({ info, handleChange }) {
         <label htmlFor="phone">Phone number</label>
         <input
           id="phone"
-          type="phone"
+          type="tel"
           value={info.phone}
           onChange={handleChange}
         />

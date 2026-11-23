@@ -24,7 +24,7 @@ export function View({ info, education, experiences, editMode }) {
           <h3>Education</h3>
           {education.map((record) => {
             return (
-              <div className="education-row">
+              <div className="education-row" key={record.id}>
                 <div>{record.endDate}</div>
                 <div>
                   {record.school} | {record.course}
@@ -37,7 +37,7 @@ export function View({ info, education, experiences, editMode }) {
           <h3>Experiences</h3>
           {experiences.map((record) => {
             return (
-              <div className="education-row">
+              <div className="education-row" key={record.id}>
                 <div>
                   {record.startDate} to {record.endDate}
                 </div>

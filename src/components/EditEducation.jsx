@@ -10,6 +10,7 @@ export function EducationForm({ education, add, update, remove }) {
         <h3>Education</h3>
         <button
           className="margin-left-base"
+          type="button"
           onClick={(event) => {
             event.preventDefault();
             return add();
@@ -54,7 +55,9 @@ export function EducationForm({ education, add, update, remove }) {
                 onChange={(event) => handleChange(event, record.id)}
               />
             </div>
-            <button onClick={() => remove(record.id)}>Delete</button>
+            <button type="button" onClick={() => remove(record.id)}>
+              Delete
+            </button>
           </div>
         );
       })}

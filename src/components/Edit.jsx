@@ -12,7 +12,10 @@ export function Edit({ info, save, education, experiences }) {
   function handleChangeInfo(e) {
     const name = e.target.id;
     const value = e.target.value;
-    setEditInfo({ ...editInfo, [name]: value });
+    setEditInfo((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   }
 
   function handleSubmit(e) {

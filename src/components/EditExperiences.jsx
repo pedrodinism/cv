@@ -11,6 +11,7 @@ export function ExperiencesForm({ experiences, add, update, remove }) {
         <h3>Experiences</h3>
         <button
           className="margin-left-base"
+          type="button"
           onClick={(event) => {
             event.preventDefault();
             return add();
@@ -25,7 +26,7 @@ export function ExperiencesForm({ experiences, add, update, remove }) {
         const widgetEndDateId = "endDate_" + record.id;
         const widgetAboutId = "about_" + record.id;
         return (
-          <div>
+          <div key={record.id}>
             <div>
               <label htmlFor={widgetCompanyId}>Company</label>
               <input
@@ -58,15 +59,16 @@ export function ExperiencesForm({ experiences, add, update, remove }) {
             </div>
             <div>
               <label htmlFor={widgetAboutId}>About</label>
-              <input
+              <textarea
                 id={widgetAboutId}
                 name="about"
-                type="textarea"
                 onChange={(event) => handleChange(record.id, event)}
                 value={record.about}
               />
             </div>
-            <button onClick={() => remove(record.id)}>Delete</button>
+            <button type="button" onClick={() => remove(record.id)}>
+              Delete
+            </button>
           </div>
         );
       })}
