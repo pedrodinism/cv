@@ -1,8 +1,18 @@
 .view {
   border: 1px solid black;
+  text-align: left;
+  background-clip: content-box;
 }
 
 .generalInfo {
+  background: darkslategray;
+  color: white;
+
+  padding: 20px;
+}
+
+.infoSection {
+  padding: 20px;
   border-bottom: 1px solid gray;
 }
 

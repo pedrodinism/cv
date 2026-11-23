@@ -1,6 +1,6 @@
 import "../styles/view.css";
 
-export function View({ info, education, editMode }) {
+export function View({ info, education, experiences, editMode }) {
   return (
     <div>
       <button
@@ -20,19 +20,29 @@ export function View({ info, education, editMode }) {
             <span>{info.phone}</span>
           </div>
         </div>
-        <div className="generalInfo">
-          <div className="school">{info.school}</div>
-          <div className="course">{info.course}</div>
-          <div className="courseFinishedOn">{info.courseFinishedOn}</div>
-        </div>
-        <div className="generalInfo">
+        <div className="infoSection">
           <h3>Education</h3>
           {education.map((record) => {
             return (
               <div className="education-row">
-                <div>School: {record.school}</div>
-                <div>Course: {record.course}</div>
-                <div>End Date: {record.endDate}</div>
+                <div>{record.endDate}</div>
+                <div>
+                  {record.school} | {record.course}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <div className="infoSection">
+          <h3>Experiences</h3>
+          {experiences.map((record) => {
+            return (
+              <div className="education-row">
+                <div>
+                  {record.startDate} to {record.endDate}
+                </div>
+                <div>{record.company}</div>
+                <div>{record.about}</div>
               </div>
             );
           })}

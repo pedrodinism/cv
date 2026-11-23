@@ -2,10 +2,12 @@ import { useState } from "react";
 import { GeneralInfoForm } from "./EditGeneral";
 import { EducationForm } from "./EditEducation";
 import "../styles/edit.css";
+import { ExperiencesForm } from "./EditExperiences";
 
-export function Edit({ info, save, education }) {
+export function Edit({ info, save, education, experiences }) {
   const [editInfo, setEditInfo] = useState(info);
   const [editEducation, setEditEducation] = useState(education);
+  const [editExperiences, setEditExperiences] = useState(experiences);
 
   function handleChangeInfo(e) {
     const name = e.target.id;
@@ -15,28 +17,20 @@ export function Edit({ info, save, education }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    save(editInfo, editEducation);
+    save(editInfo, editEducation, editExperiences);
   }
 
-  function addEducation() {
-    setEditEducation((prev) => [
-      ...prev,
-      {
-        id: getId(),
-        school: "",
-        course: "",
-        endDate: "",
-      },
-    ]);
+  function add(set, record) {
+    set((prev) => [...prev, record]);
   }
 
-  function deleteEducation(id) {
-    setEditEducation((prev) => prev.filter((record) => record.id !== id));
+  function deleteRecord(set, id) {
+    set((prev) => prev.filter((record) => record.id !== id));
   }
 
-  function getId() {
+  function getId(list) {
     let max = 0;
-    for (let record of editEducation) {
+    for (let record of list) {
       if (record.id > max) {
         max = record.id;
       }
@@ -58,11 +52,30 @@ export function Edit({ info, save, education }) {
         <GeneralInfoForm info={editInfo} handleChange={handleChangeInfo} />
         <EducationForm
           education={editEducation}
-          add={addEducation}
-          update={(id, record) => {
-            return update(id, record, setEditEducation);
-          }}
-          remove={deleteEducation}
+          add={() =>
+            add(setEditEducation, {
+              id: getId(editEducation),
+              school: "",
+              course: "",
+              endDate: "",
+            })
+          }
+          update={(id, record) => update(id, record, setEditEducation)}
+          remove={(id) => deleteRecord(setEditEducation, id)}
+        />
+        <ExperiencesForm
+          experiences={editExperiences}
+          add={() =>
+            add(setEditExperiences, {
+              id: getId(editExperiences),
+              company: "",
+              startDate: "",
+              endDate: "",
+              about: "",
+            })
+          }
+          update={(id, record) => update(id, record, setEditExperiences)}
+          remove={(id) => deleteRecord(setEditExperiences, id)}
         />
         <div className="text-align-right">
           <button type="submit">Save</button>

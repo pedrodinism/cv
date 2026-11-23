@@ -9,12 +9,14 @@ export function App() {
     phone: "",
   });
   const [education, setEducation] = useState([]);
+  const [experiences, setExperiences] = useState([]);
 
   const [isEdit, setIsEdit] = useState(true);
 
-  function handleSubmit(generalInfo, educationInfo) {
+  function handleSubmit(generalInfo, educationInfo, experiencesInfo) {
     setInfo(generalInfo);
     setEducation(educationInfo);
+    setExperiences(experiencesInfo);
     toggleEditMode();
   }
 
@@ -23,7 +25,21 @@ export function App() {
   }
 
   if (isEdit) {
-    return <Edit info={info} education={education} save={handleSubmit} />;
+    return (
+      <Edit
+        info={info}
+        education={education}
+        save={handleSubmit}
+        experiences={experiences}
+      />
+    );
   }
-  return <View info={info} education={education} editMode={toggleEditMode} />;
+  return (
+    <View
+      info={info}
+      education={education}
+      experiences={experiences}
+      editMode={toggleEditMode}
+    />
+  );
 }

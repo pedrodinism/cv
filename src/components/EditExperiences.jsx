@@ -1,4 +1,4 @@
-export function EditExperiences({ experiences, add, update, remove }) {
+export function ExperiencesForm({ experiences, add, update, remove }) {
   function handleChange(id, event) {
     update(id, {
       [event.target.name]: event.target.value,
@@ -27,17 +27,17 @@ export function EditExperiences({ experiences, add, update, remove }) {
         return (
           <div>
             <div>
-              <label htmlFor={widgetCompanyId}></label>
+              <label htmlFor={widgetCompanyId}>Company</label>
               <input
                 id={widgetCompanyId}
-                name="school"
+                name="company"
                 type="text"
                 onChange={(event) => handleChange(record.id, event)}
-                value={record.school}
+                value={record.company}
               />
             </div>
             <div>
-              <label htmlFor={widgetStartDateId}></label>
+              <label htmlFor={widgetStartDateId}>Start Date</label>
               <input
                 id={widgetStartDateId}
                 name="startDate"
@@ -47,7 +47,7 @@ export function EditExperiences({ experiences, add, update, remove }) {
               />
             </div>
             <div>
-              <label htmlFor={widgetEndDateId}></label>
+              <label htmlFor={widgetEndDateId}>End Date</label>
               <input
                 id={widgetEndDateId}
                 name="endDate"
@@ -57,7 +57,7 @@ export function EditExperiences({ experiences, add, update, remove }) {
               />
             </div>
             <div>
-              <label htmlFor={widgetAboutId}></label>
+              <label htmlFor={widgetAboutId}>About</label>
               <input
                 id={widgetAboutId}
                 name="about"
@@ -66,7 +66,7 @@ export function EditExperiences({ experiences, add, update, remove }) {
                 value={record.about}
               />
             </div>
-            <button onClick={() => remove(record.id)}></button>
+            <button onClick={() => remove(record.id)}>Delete</button>
           </div>
         );
       })}
